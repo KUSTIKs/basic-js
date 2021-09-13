@@ -23,7 +23,24 @@ import { NotImplementedError } from '../extensions/index.js';
  *  [1, 1, 1]
  * ]
  */
-export default function minesweeper (/* matrix */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+
+function clamp(min, value, max) {
+  return Math.max(min, Math.min(max, value));
+}
+
+export default function minesweeper(matrix) {
+  return matrix.map((row, rInd) =>
+    row.map((_, cInd) => {
+      let q = 0;
+      q += matrix[rInd + 1]?.[cInd] ? 1 : 0;
+      q += matrix[rInd - 1]?.[cInd] ? 1 : 0;
+      q += matrix[rInd]?.[cInd - 1] ? 1 : 0;
+      q += matrix[rInd]?.[cInd + 1] ? 1 : 0;
+      q += matrix[rInd + 1]?.[cInd - 1] ? 1 : 0;
+      q += matrix[rInd + 1]?.[cInd + 1] ? 1 : 0;
+      q += matrix[rInd - 1]?.[cInd - 1] ? 1 : 0;
+      q += matrix[rInd - 1]?.[cInd + 1] ? 1 : 0;
+      return q;
+    })
+  );
 }
