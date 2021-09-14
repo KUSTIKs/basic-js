@@ -32,14 +32,14 @@ export default function minesweeper(matrix) {
   return matrix.map((row, rInd) =>
     row.map((_, cInd) => {
       let q = 0;
-      q += matrix[rInd + 1]?.[cInd] ? 1 : 0;
-      q += matrix[rInd - 1]?.[cInd] ? 1 : 0;
-      q += matrix[rInd]?.[cInd - 1] ? 1 : 0;
-      q += matrix[rInd]?.[cInd + 1] ? 1 : 0;
-      q += matrix[rInd + 1]?.[cInd - 1] ? 1 : 0;
-      q += matrix[rInd + 1]?.[cInd + 1] ? 1 : 0;
-      q += matrix[rInd - 1]?.[cInd - 1] ? 1 : 0;
-      q += matrix[rInd - 1]?.[cInd + 1] ? 1 : 0;
+      q += matrix[rInd + 1] && matrix[rInd + 1][cInd] ? 1 : 0;
+      q += matrix[rInd - 1] && matrix[rInd - 1][cInd] ? 1 : 0;
+      q += matrix[rInd] && matrix[rInd][cInd - 1] ? 1 : 0;
+      q += matrix[rInd] && matrix[rInd][cInd + 1] ? 1 : 0;
+      q += matrix[rInd + 1] && matrix[rInd + 1][cInd - 1] ? 1 : 0;
+      q += matrix[rInd + 1] && matrix[rInd + 1][cInd + 1] ? 1 : 0;
+      q += matrix[rInd - 1] && matrix[rInd - 1][cInd - 1] ? 1 : 0;
+      q += matrix[rInd - 1] && matrix[rInd - 1][cInd + 1] ? 1 : 0;
       return q;
     })
   );

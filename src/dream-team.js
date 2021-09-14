@@ -17,8 +17,9 @@ export default function createDreamTeam(members) {
   if (!Array.isArray(members)) return false;
   const teamName = members
     .filter((name) => typeof name === 'string')
-    .map((name) => name.trim()?.[0].toUpperCase())
+    .map((name) => name.trim()[0])
     .filter(Boolean)
+    .map((letter) => letter.toUpperCase())
     .sort()
     .join('');
   return teamName;

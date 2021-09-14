@@ -24,7 +24,7 @@ export default function repeater(str, options) {
           .fill(
             typeof options.addition === 'undefined' ? '' : `${options.addition}`
           )
-          .join(options.additionSeparator ?? '|')}`
+          .join(options.additionSeparator || '|')}`
     )
-    .join(options.separator ?? '+');
+    .join(options.separator || '+');
 }
